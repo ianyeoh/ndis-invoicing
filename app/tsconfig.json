@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/timeslot-selector/CustomListbox.jsx", "src/components/timeslot-selector/ExportButton.jsx", "src/components/timeslot-selector/TimeslotDay.jsx", "src/components/timeslot-selector/TimeslotAxis.jsx", "src/components/timeslot-selector/MenuDropdown.jsx", "src/components/timeslot-selector/TimeslotPicker.jsx", "src/components/timeslot-selector/AddModifierButton.jsx", "src/app/(protected)/dashboard/page.tsx", "src/components/timeslot-selector/Timeslot.jsx"],
+  "exclude": ["node_modules"]
+}
