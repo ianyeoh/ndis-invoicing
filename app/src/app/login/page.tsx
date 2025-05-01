@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { GoogleSignInButton } from "@/components/google/google-sign-in-button";
 import { useAnonymousSession } from "@/components/anonymous-session/anonymous-session";
-import Demo from "./demo";
+// import Demo from "./demo";
 
 export default function LoginPage() {
     const { setAnonymousSession } = useAnonymousSession();
