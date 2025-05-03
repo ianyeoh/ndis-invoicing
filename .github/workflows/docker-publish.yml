@@ -10,9 +10,21 @@
 name: Publish Docker image
 
 on:
+  schedule:
+    - cron: "35 20 * * *"
   push:
-    branches:
-      - main
+      branches: ["main"]
+      # Publish semver tags as releases.
+      tags: ["v*.*.*"]
+  pull_request:
+      branches: ["main"]
+      types: [opened, synchronize]
+
+env:
+    # Use docker.io for Docker Hub if empty
+    REGISTRY: ghcr.io
+    # github.repository as <account>/<repo>
+    IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   push_to_registry:
@@ -44,7 +56,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/ianyeoh/invoicing:latest
+          tags: ghcr.io/${{github.repository}}:latest
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
