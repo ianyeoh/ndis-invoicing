@@ -27,27 +27,24 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into ghcr.io registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: ianyeoh/invoicing
-
-      - name: Build and push Docker image
+      - name: Build and push (if not PR) Docker image
         id: push
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
           file: ./Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ghcr.io/ianyeoh/invoicing:latest
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
