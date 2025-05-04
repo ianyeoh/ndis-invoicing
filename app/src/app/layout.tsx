@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
 import { AnonymousSessionProvider } from "@/components/anonymous-session/anonymous-session";
+import { PublicEnvScript } from "next-runtime-env";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -20,6 +21,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <PublicEnvScript />
+            </head>
             <body
                 className={cn(
                     "min-h-screen bg-background font-sans antialiased",
