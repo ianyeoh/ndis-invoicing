@@ -30,6 +30,7 @@ import { TimeslotColumn } from "../timeslot-picker/timeslot-day-column";
 import { isScopeGranted } from "@/lib/google-oauth2";
 import { GoogleSignInButton } from "./google-sign-in-button";
 import { usePathname, useSearchParams } from "next/navigation";
+import { env } from "next-runtime-env";
 
 type SheetState =
     | {
@@ -134,8 +135,8 @@ export function ExportToSheetsFlow({
         closeDialogs(); // shouldn't happen, but just in case since they mutually break each other
         disable();
         openPicker({
-            clientId: process.env.GOOGLE_CLIENT_ID!,
-            developerKey: process.env.GOOGLE_PICKER_DEVELOPER_KEY!,
+            clientId: env("NEXT_PUBLIC_GOOGLE_CLIENT_ID")!,
+            developerKey: env("NEXT_PUBLIC_GOOGLE_PICKER_DEVELOPER_KEY")!,
             viewId: "SPREADSHEETS",
             token, // already have the token
             callbackFunction: (data) => {
