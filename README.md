@@ -1,5 +1,7 @@
 # NDIS Invoicing
 
+![build workflow badge](https://github.com/ianyeoh/ndis-invoicing/actions/workflows/docker-publish.yml/badge.svg)
+
 A web-based tool to easily generate time-worked invoices for Australian NDIS support workers. All data is exported into Google Sheets using the Sheets API, authenticated with OAuth.
 
 ## Privacy Policy
