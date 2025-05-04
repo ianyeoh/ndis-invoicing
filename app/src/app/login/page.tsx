@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { GoogleSignInButton } from "@/components/google/google-sign-in-button";
 import { useAnonymousSession } from "@/components/anonymous-session/anonymous-session";
+import Link from "next/link";
 // import Demo from "./demo";
 
 export default function LoginPage() {
@@ -35,6 +36,17 @@ export default function LoginPage() {
                         <Button variant="outline" onClick={setAnonymousSession}>
                             Continue without signing in
                         </Button>
+                        <div className="flex justify-end">
+                            <Link
+                                href="/privacy"
+                                className="text-xs text-muted-foreground"
+                            >
+                                View our{" "}
+                                <span className="underline">
+                                    privacy policy.
+                                </span>
+                            </Link>
+                        </div>
                     </div>
                 </CardContent>
             </Card>
