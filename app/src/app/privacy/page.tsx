@@ -22,7 +22,7 @@ export default function LoginPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-sm">
-                        None of your Google data stored, saved or sent outside
+                        None of your Google data is stored, saved or sent outside
                         your computer except to Google's own Drive and Sheets
                         APIs that you authorise on your Google account. Only the
                         Google Sheet spreadsheet you choose through the Google
