@@ -112,11 +112,7 @@ export function ExportToSheetsFlow({
             !session.data ||
             !isScopeGranted(
                 session.data,
-                "https://www.googleapis.com/auth/drive.readonly"
-            ) ||
-            !isScopeGranted(
-                session.data,
-                "https://www.googleapis.com/auth/spreadsheets"
+                "https://www.googleapis.com/auth/drive.file"
             )
         ) {
             setAddScopesDialogOpen(true);
@@ -313,9 +309,7 @@ export function ExportToSheetsFlow({
                         </DialogTitle>
                         <DialogDescription>
                             Exporting to one of your Google Sheet spreadsheets
-                            requires greater access permissions (read-only
-                            access to Google Drive, and write access to Google
-                            Sheets).
+                            requires greater access permissions.
                         </DialogDescription>
                     </DialogHeader>
 
@@ -323,7 +317,7 @@ export function ExportToSheetsFlow({
                         <GoogleSignInButton
                             className="grow"
                             callbackURL={`${pathname}?export=google-sheets`}
-                            scopes="openid https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/userinfo.profile"
+                            scopes="openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.file"
                         >
                             Grant access
                         </GoogleSignInButton>
