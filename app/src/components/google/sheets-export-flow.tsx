@@ -117,6 +117,7 @@ export function ExportToSheetsFlow({
             !isScopeGranted(
                 session.data,
                 "https://www.googleapis.com/auth/spreadsheets"
+            )
         ) {
             setAddScopesDialogOpen(true);
             return false;
