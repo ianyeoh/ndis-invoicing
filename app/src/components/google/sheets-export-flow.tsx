@@ -112,8 +112,11 @@ export function ExportToSheetsFlow({
             !session.data ||
             !isScopeGranted(
                 session.data,
-                "https://www.googleapis.com/auth/drive.file"
-            )
+                "https://www.googleapis.com/auth/drive.readonly"
+            ) ||
+            !isScopeGranted(
+                session.data,
+                "https://www.googleapis.com/auth/spreadsheets"
         ) {
             setAddScopesDialogOpen(true);
             return false;
@@ -317,7 +320,7 @@ export function ExportToSheetsFlow({
                         <GoogleSignInButton
                             className="grow"
                             callbackURL={`${pathname}?export=google-sheets`}
-                            scopes="openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.file"
+                            scopes="openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/spreadsheets"
                         >
                             Grant access
                         </GoogleSignInButton>
