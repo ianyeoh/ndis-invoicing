@@ -199,7 +199,7 @@ export const NDISCodes: NDISCode[] = [
         },
     },
     {
-        itemNumber: "04_104_0125_6_1",
+        itemNumber: "04_106_0125_6_1",
         itemName: "Access Community Social and Rec Activ - Standard - Sunday",
         rates: {
             national: 122.59,
@@ -216,7 +216,7 @@ export const NDISCodes: NDISCode[] = [
         },
     },
     {
-        itemNumber: "04_104_0125_6_1",
+        itemNumber: "04_102_0125_6_1",
         itemName:
             "Access Community Social and Rec Activ - Standard - Public Holiday",
         rates: {
