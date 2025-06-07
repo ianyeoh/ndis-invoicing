@@ -8,6 +8,7 @@ import {
     eachDayOfInterval,
     isToday,
     getDay,
+    StartOfWeekOptions,
 } from "date-fns";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -59,14 +60,19 @@ function TimeslotPickerUI({
     value: TimeslotPickerState;
     onValueChange: Dispatch<SetStateAction<TimeslotPickerState>>;
 }) {
+    /* Configurable options */
+    const weekOptions: StartOfWeekOptions = {
+        weekStartsOn: 1, // Monday (0 = Sunday, 1 = Monday, etc.)
+    };
+
     /* Object destructuring state variable for cleaner code */
     const { weekOffset, columns } = value;
 
     /* Component setup */
     const today = new Date();
     const todayPlusOffset = addWeeks(today, weekOffset); // today + weekOffset number of weeks
-    const startOfWeek = getStartOfWeek(todayPlusOffset);
-    const endOfWeek = getEndOfWeek(todayPlusOffset);
+    const startOfWeek = getStartOfWeek(todayPlusOffset, weekOptions);
+    const endOfWeek = getEndOfWeek(todayPlusOffset, weekOptions);
 
     /* Register left and right arrow controls */
     useHotkeys("ArrowLeft", () => setWeekOffset(weekOffset - 1), [weekOffset]);
