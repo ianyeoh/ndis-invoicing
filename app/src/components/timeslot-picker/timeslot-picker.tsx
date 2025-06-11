@@ -9,6 +9,7 @@ import {
     isToday,
     getDay,
     StartOfWeekOptions,
+    Day,
 } from "date-fns";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -56,13 +57,15 @@ export const initialPickerState = (): TimeslotPickerState => {
 function TimeslotPickerUI({
     value,
     onValueChange,
+    weekStartsOn,
 }: {
     value: TimeslotPickerState;
     onValueChange: Dispatch<SetStateAction<TimeslotPickerState>>;
+    weekStartsOn: Day;
 }) {
     /* Configurable options */
     const weekOptions: StartOfWeekOptions = {
-        weekStartsOn: 1, // Monday (0 = Sunday, 1 = Monday, etc.)
+        weekStartsOn, // Monday (0 = Sunday, 1 = Monday, etc.)
     };
 
     /* Object destructuring state variable for cleaner code */
@@ -241,6 +244,7 @@ function TimeslotPickerUI({
 export default function TimeslotPicker({
     ...props
 }: {
+    weekStartsOn: Day;
     value: TimeslotPickerState;
     onValueChange: Dispatch<SetStateAction<TimeslotPickerState>>;
 }) {

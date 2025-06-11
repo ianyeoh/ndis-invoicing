@@ -1,12 +1,13 @@
 import { NDISCode } from "@/components/ndis-codes/ndis-codes";
 import { TimeslotColumn } from "@/components/timeslot-picker/timeslot-day-column";
-import { addMinutes, addWeeks, setDay, startOfDay } from "date-fns";
+import { addMinutes, addWeeks, Day, setDay, startOfDay } from "date-fns";
 
 export function groupContiguousTimeslots(
     weeks: {
         [weekOffset: number]: TimeslotColumn[];
     },
     timeslotSize: number,
+    weekStartsOn: Day,
     breakOnDay: boolean = true
 ) {
     const contiguousBlocks = [];
@@ -19,8 +20,9 @@ export function groupContiguousTimeslots(
         const week = startOfDay(addWeeks(new Date(), Number(weekOffset)));
 
         // 0 is Sunday, 1 is Monday and so on...
-        for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-            const day = setDay(week, dayOfWeek);
+        for (let i = 0; i < 7; i++) {
+            const dayOfWeek = (i + weekStartsOn) % 7;
+            const day = setDay(week, dayOfWeek, { weekStartsOn });
             const dayColumn = dayColumns[dayOfWeek];
 
             let slotIndex = 0;

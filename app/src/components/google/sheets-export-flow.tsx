@@ -31,6 +31,7 @@ import { isScopeGranted } from "@/lib/google-oauth2";
 import { GoogleSignInButton } from "./google-sign-in-button";
 import { usePathname, useSearchParams } from "next/navigation";
 import { env } from "next-runtime-env";
+import { Day } from "date-fns";
 
 type SheetState =
     | {
@@ -49,12 +50,14 @@ type SheetState =
       };
 
 export function ExportToSheetsFlow({
+    weekStartsOn,
     selection,
     children,
     className,
     variant,
     ...props
 }: {
+    weekStartsOn: Day;
     selection: {
         [weekOffset: number]: TimeslotColumn[];
     };
@@ -281,6 +284,7 @@ export function ExportToSheetsFlow({
                         {sheetState.state === "loaded" && (
                             <div className="px-1 py-5">
                                 <SheetDetailsForm
+                                    weekStartsOn={weekStartsOn}
                                     spreadsheet={sheetState.spreadsheet}
                                     selection={selection}
                                 />

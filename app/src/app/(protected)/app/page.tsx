@@ -44,7 +44,6 @@ import {
     MenubarTrigger,
 } from "@/components/ui/menubar";
 import SelectionsDataDialog from "@/components/data-tables/selections-data-table/selections-data-dialog";
-import SelectionInfoToast from "@/components/selection-info-toast/selection-info-toast";
 
 function App() {
     const { dragSelect, enable, disable } = useDragSelect();
@@ -55,6 +54,8 @@ function App() {
     const [codeList, setCodeList] = useState<NDISComboboxList>([]);
     const [resetDialogOpen, setResetDialogOpen] = useState<boolean>(false);
     const [summaryDialogOpen, setSummaryDialogOpen] = useState<boolean>(false);
+
+    const weekStartsOn = 1; // 0 = Sunday, 1 = Monday, etc.
 
     /* Load saved session on first load */
     useEffect(() => {
@@ -267,6 +268,7 @@ function App() {
 
             <div className="pt-5 flex justify-center gap-5 select-none min-w-[1050px]">
                 <TimeslotPicker
+                    weekStartsOn={weekStartsOn}
                     value={timeSelection}
                     onValueChange={setTimeSelection}
                 />
@@ -422,6 +424,7 @@ function App() {
                         <span className="font-semibold">Export</span>
                         <ExportToSheetsFlow
                             variant="outline"
+                            weekStartsOn={weekStartsOn}
                             selection={timeSelection.columns}
                         />
                     </div>

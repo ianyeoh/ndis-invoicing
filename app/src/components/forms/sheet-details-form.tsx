@@ -14,7 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { addWeeks } from "date-fns";
+import { addWeeks, Day } from "date-fns";
 import { DateRangePicker } from "../ui/date-range-picker";
 import { Textarea } from "../ui/textarea";
 import { useMemo, useState } from "react";
@@ -72,10 +72,12 @@ type FormDefaultValues = {
     notes?: string;
 };
 export default function SheetDetailsForm({
+    weekStartsOn,
     spreadsheet,
     selection,
     defaultValues,
 }: {
+    weekStartsOn: Day;
     spreadsheet: GoogleSpreadsheet;
     selection: {
         [weekOffset: number]: TimeslotColumn[];
@@ -95,7 +97,8 @@ export default function SheetDetailsForm({
             /* Try and compute a date range from the user's selections */
             const timeSelections = groupContiguousTimeslots(
                 selection,
-                timeslotSize
+                timeslotSize,
+                weekStartsOn
             );
 
             if (timeSelections.length > 0) {
@@ -203,7 +206,8 @@ export default function SheetDetailsForm({
                 setExportTooltip("Processing your time selections");
                 const timeSelections = groupContiguousTimeslots(
                     selection,
-                    timeslotSize
+                    timeslotSize,
+                    weekStartsOn
                 );
 
                 setExportTooltip("Writing time selections to Google Sheets");
