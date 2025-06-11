@@ -264,6 +264,7 @@ function App() {
                 open={summaryDialogOpen}
                 onOpenChange={setSummaryDialogOpen}
                 selections={timeSelection.columns}
+                weekStartsOn={weekStartsOn}
             />
 
             <div className="pt-5 flex justify-center gap-5 select-none min-w-[1050px]">

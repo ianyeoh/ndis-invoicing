@@ -10,20 +10,28 @@ import { groupContiguousTimeslots } from "@/lib/timesheet";
 import { TimeslotColumn } from "@/components/timeslot-picker/timeslot-day-column";
 import { timeslotSize } from "@/components/timeslot-picker/timeslot-picker";
 import SelectionsDataTable from "./selections-data-table";
+import { Day } from "date-fns";
 
 export default function SelectionsDataDialog({
     open,
     onOpenChange,
     selections,
+    weekStartsOn,
 }: {
     open: boolean;
     onOpenChange: Dispatch<SetStateAction<boolean>>;
     selections: {
         [weekOffset: number]: TimeslotColumn[];
     };
+    weekStartsOn: Day;
 }) {
     const groupedSelections = useMemo(() => {
-        return groupContiguousTimeslots(selections, timeslotSize, true);
+        return groupContiguousTimeslots(
+            selections,
+            timeslotSize,
+            weekStartsOn,
+            true
+        );
     }, [selections, timeslotSize]);
 
     return (
