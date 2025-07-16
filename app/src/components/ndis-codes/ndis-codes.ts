@@ -44,9 +44,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Assistance With Self-Care Activities - Standard - Weekday Daytime",
         rates: {
-            national: 67.56,
-            remote: 94.58,
-            veryRemote: 101.34,
+            national: 70.23,
+            remote: 98.32,
+            veryRemote: 105.35,
         },
         type: {
             day: "Weekday",
@@ -62,9 +62,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Assistance With Self-Care Activities - Standard - Weekday Evening",
         rates: {
-            national: 74.44,
-            remote: 104.22,
-            veryRemote: 111.66,
+            national: 77.38,
+            remote: 108.33,
+            veryRemote: 116.07,
         },
         type: {
             day: "Weekday",
@@ -80,9 +80,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Assistance With Self-Care Activities - Standard - Weekday Night",
         rates: {
-            national: 75.82,
-            remote: 106.15,
-            veryRemote: 113.73,
+            national: 78.81,
+            remote: 110.33,
+            veryRemote: 118.22,
         },
         type: {
             day: "Weekday",
@@ -97,9 +97,9 @@ export const NDISCodes: NDISCode[] = [
         itemNumber: "01_013_0107_1_1",
         itemName: "Assistance With Self-Care Activities - Standard - Saturday",
         rates: {
-            national: 95.07,
-            remote: 133.1,
-            veryRemote: 142.61,
+            national: 98.83,
+            remote: 138.36,
+            veryRemote: 148.25,
         },
         type: {
             day: "Saturday",
@@ -114,9 +114,9 @@ export const NDISCodes: NDISCode[] = [
         itemNumber: "01_014_0107_1_1",
         itemName: "Assistance With Self-Care Activities - Standard - Sunday",
         rates: {
-            national: 122.59,
-            remote: 171.63,
-            veryRemote: 183.89,
+            national: 127.43,
+            remote: 178.40,
+            veryRemote: 191.15,
         },
         type: {
             day: "Sunday",
@@ -132,9 +132,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Assistance With Self-Care Activities - Standard - Public Holiday",
         rates: {
-            national: 150.1,
-            remote: 210.14,
-            veryRemote: 225.15,
+            national: 156.03,
+            remote: 218.44,
+            veryRemote: 234.05,
         },
         type: {
             day: "Public Holiday",
@@ -150,9 +150,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Access Community Social and Rec Activ - Standard - Weekday Daytime",
         rates: {
-            national: 67.56,
-            remote: 94.58,
-            veryRemote: 101.34,
+            national: 70.23,
+            remote: 98.32,
+            veryRemote: 105.35,
         },
         type: {
             day: "Weekday",
@@ -168,9 +168,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Access Community Social and Rec Activ - Standard - Weekday Evening",
         rates: {
-            national: 74.44,
-            remote: 104.22,
-            veryRemote: 111.66,
+            national: 77.38,
+            remote: 108.33,
+            veryRemote: 116.07,
         },
         type: {
             day: "Weekday",
@@ -185,9 +185,9 @@ export const NDISCodes: NDISCode[] = [
         itemNumber: "04_105_0125_6_1",
         itemName: "Access Community Social and Rec Activ - Standard - Saturday",
         rates: {
-            national: 95.07,
-            remote: 133.1,
-            veryRemote: 142.61,
+            national: 98.83,
+            remote: 138.36,
+            veryRemote: 148.25,
         },
         type: {
             day: "Saturday",
@@ -202,9 +202,9 @@ export const NDISCodes: NDISCode[] = [
         itemNumber: "04_106_0125_6_1",
         itemName: "Access Community Social and Rec Activ - Standard - Sunday",
         rates: {
-            national: 122.59,
-            remote: 171.63,
-            veryRemote: 183.89,
+            national: 127.43,
+            remote: 178.40,
+            veryRemote: 191.15,
         },
         type: {
             day: "Sunday",
@@ -220,9 +220,9 @@ export const NDISCodes: NDISCode[] = [
         itemName:
             "Access Community Social and Rec Activ - Standard - Public Holiday",
         rates: {
-            national: 150.1,
-            remote: 210.14,
-            veryRemote: 225.15,
+            national: 156.03,
+            remote: 218.44,
+            veryRemote: 234.05,
         },
         type: {
             day: "Public Holiday",
