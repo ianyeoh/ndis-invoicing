@@ -66,7 +66,7 @@ export function ExportToSheetsFlow({
     variant?:
         | "default"
         | "destructive"
-        | "outline"
+        | "outline-solid"
         | "secondary"
         | "ghost"
         | "link";
@@ -215,7 +215,7 @@ export function ExportToSheetsFlow({
             <Button
                 ref={startFlowRef}
                 className={className}
-                variant={!variant ? "outline" : variant}
+                variant={!variant ? "outline-solid" : variant}
                 onClick={startExportFlow}
                 {...props}
             >
