@@ -46,13 +46,13 @@
         "react-day-picker": "^9.12.0",
         "react-dom": "^19.2.3",
         "react-google-drive-picker": "^1.2.2",
-        "react-hook-form": "^7.68.0",
+        "react-hook-form": "^7.51.4",
         "react-hotkeys-hook": "^5.2.1",
         "sonner": "^2.0.7",
         "tailwind-merge": "^3.4.0",
         "tailwindcss-animate": "^1.0.7",
         "uniqolor": "^1.1.1",
-        "zod": "^4.2.0"
+        "zod": "^3.23.7"
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4.1.18",

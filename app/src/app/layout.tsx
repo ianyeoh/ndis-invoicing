@@ -41,7 +41,6 @@ export default function RootLayout({
                             <main>{children}</main>
                             <Toaster
                                 expand={true}
-                                pauseWhenPageIsHidden
                                 richColors
                                 closeButton
                             />
