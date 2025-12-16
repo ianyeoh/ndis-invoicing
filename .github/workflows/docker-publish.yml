@@ -12,6 +12,7 @@ name: build
 on:
   schedule:
     - cron: "35 20 * * *"
+  workflow_dispatch:
   push:
       branches: ["main"]
       # Publish semver tags as releases.
