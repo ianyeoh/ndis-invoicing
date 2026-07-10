@@ -24,10 +24,12 @@ import TimeslotAxis from "@/components/timeslot-picker/timeslot-axis";
 import "./drag-select-styling.css";
 
 import { useDragSelect } from "../drag-select/drag-select";
+import { maxPickerHeight, timeslotSize } from "@/lib/constants";
 
-/* Configurable constants */
-export const maxPickerHeight = 840; // in pixels, total height of the picker (ensure evenly divisible by 24 (hrs in a day))
-export const timeslotSize = 15; // in minutes, this is how much time a single timeslot represents
+/* Configurable constants now live in @/lib/constants so pure logic and
+ * data modules can use them without importing component code. Re-exported
+ * here for existing importers of this module. */
+export { maxPickerHeight, timeslotSize };
 
 /* TimeslotPicker component state type */
 export type TimeslotPickerState = {

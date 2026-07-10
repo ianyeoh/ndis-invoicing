@@ -23,6 +23,7 @@ import {
 } from "@/components/ndis-codes/ndis-code-combobox";
 import { toast } from "sonner";
 import { addWeeks, isSaturday, isSunday, setDay } from "date-fns";
+import Holidays from "date-holidays";
 import { ExportToSheetsFlow } from "@/components/google/sheets-export-flow";
 import { clearSession, loadSession, saveSession } from "./session";
 import {
@@ -44,6 +45,13 @@ import {
     MenubarTrigger,
 } from "@/components/ui/menubar";
 import SelectionsDataDialog from "@/components/data-tables/selections-data-table/selections-data-dialog";
+
+/* Australian public-holiday calendar, built once at module load (constructing
+ * it per call is wasteful). Defaults to NSW, the app's primary jurisdiction;
+ * revisit if other states need distinct holiday sets. Restricted to `public`
+ * holidays so observances (which are not billed at the public-holiday rate)
+ * do not trigger the Public Holiday day type. */
+const holidays = new Holidays("AU", "NSW", { types: ["public"] });
 
 function App() {
     const { dragSelect, enable, disable } = useDragSelect();
@@ -118,7 +126,11 @@ function App() {
     }
 
     function selectDayType(date: Date): DayTypes {
-        if (isSaturday(date)) {
+        // A public holiday takes precedence over the day of week (a holiday
+        // falling on a Saturday is still billed at the public-holiday rate).
+        if (holidays.isHoliday(date)) {
+            return "Public Holiday";
+        } else if (isSaturday(date)) {
             return "Saturday";
         } else if (isSunday(date)) {
             return "Sunday";

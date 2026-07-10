@@ -37,29 +37,15 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 
-export const sheetDetailsSchema = z
-    .object({
-        sheetTitle: z.string().min(2),
-        invoiceNum: z.coerce.number().positive(),
-        dateRange: z.object(
-            {
-                from: z.date(),
-                to: z.date(),
-            },
-            {
-                required_error: "Please select a date range.",
-            }
-        ),
-        from: z.string().optional(),
-        to: z.string().optional(),
-        notes: z.string().optional(),
-    })
-    .refine((data) => data.dateRange.from < data.dateRange.to, {
-        path: ["dateRange"],
-        message: "Start date must be before end date.",
-    });
-
-export type SheetDetailsType = z.infer<typeof sheetDetailsSchema>;
+/* The schema + inferred type now live in @/lib/sheet-details.schema so pure
+ * logic modules (e.g. spreadsheets.ts) can use SheetDetailsType without
+ * importing this React form. Imported for local use and re-exported here so
+ * existing importers of this module keep working. */
+import {
+    sheetDetailsSchema,
+    type SheetDetailsType,
+} from "@/lib/sheet-details.schema";
+export { sheetDetailsSchema, type SheetDetailsType };
 type FormDefaultValues = {
     sheetTitle?: string;
     invoiceNum?: number;
@@ -117,7 +103,10 @@ export default function SheetDetailsForm({
 
             /* Try and automatically compute invoice number from the user's worksheet titles */
             let highestNum = 1;
-            const invoiceRegex = /^Invoice \d+$/gm;
+            // No `g` flag: a global regex advances lastIndex between .test()
+            // calls, which would skip titles and under-count the next invoice
+            // number. Each title is matched independently here.
+            const invoiceRegex = /^Invoice \d+$/;
             for (const title of Object.keys(spreadsheet.sheetsByTitle)) {
                 if (invoiceRegex.test(title)) {
                     const invoiceNum = Number(title.split(" ")[1]);

@@ -1,6 +1,7 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { env } from "next-runtime-env";
+import { assertServerEnv } from "@/lib/env";
 
 const authOptions: AuthOptions = {
     pages: {
@@ -47,4 +48,15 @@ const authOptions: AuthOptions = {
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+// Fail fast at request time (not module import) so `next build` stays green
+// without real secrets, but any auth request without valid config errors
+// clearly instead of failing deep inside the OAuth flow.
+async function guardedHandler(
+    req: Request,
+    ctx: { params: Promise<{ nextauth: string[] }> },
+) {
+    assertServerEnv();
+    return handler(req, ctx);
+}
+
+export { guardedHandler as GET, guardedHandler as POST };

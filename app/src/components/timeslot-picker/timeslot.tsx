@@ -1,17 +1,17 @@
 import { cn } from "@/lib/utils";
 import { HTMLAttributes, useEffect, useRef } from "react";
 import { useDragSelect } from "../drag-select/drag-select";
-import { NDISCode } from "../ndis-codes/ndis-codes";
 import uniqolor from "uniqolor";
+import { TimeslotState } from "@/lib/types";
+
+/* TimeslotState now lives in @/lib/types (shared, component-free).
+ * Re-exported here for existing importers of this module. */
+export type { TimeslotState };
 
 export const initialTimeslotState = (): TimeslotState => {
     return {
         code: null,
     };
-};
-
-export type TimeslotState = {
-    code: NDISCode | null;
 };
 
 interface TimeslotProps extends HTMLAttributes<HTMLDivElement> {
