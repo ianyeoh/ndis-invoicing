@@ -1,8 +1,8 @@
 import { GoogleSpreadsheetWorksheet } from "google-spreadsheet";
 import { SheetTemplate } from "./templates";
-import { SheetDetailsType } from "../components/forms/sheet-details-form";
+import { SheetDetailsType } from "@/lib/sheet-details.schema";
 import { differenceInMinutes, format } from "date-fns";
-import { getNDISCode, NDISCode } from "../components/ndis-codes/ndis-codes";
+import { getNDISCode, NDISCode } from "@/lib/ndis-codes";
 import currency from "currency.js";
 
 export async function copyTemplateToSpreadsheet(

@@ -10,7 +10,14 @@ export function loadSession() {
     const session = localStorage.getItem(sessionKey);
 
     if (session) {
-        return JSON.parse(session);
+        try {
+            return JSON.parse(session);
+        } catch {
+            // A corrupt blob would otherwise throw and white-screen the app on
+            // load. Discard it and start fresh instead.
+            clearSession();
+            return null;
+        }
     }
 
     return null;

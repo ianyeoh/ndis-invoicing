@@ -39,7 +39,10 @@ export default function EnsureAuthenticated({
     switch (session.status) {
         case "loading":
             return (
-                <div className="flex justify-center items-center h-screen">
+                <div
+                    className="flex justify-center items-center h-screen"
+                    data-testid="auth-loading"
+                >
                     <div className="flex gap-3 items-center">
                         <LoadingSpinner />
                         <span className="text-lg">Loading...</span>

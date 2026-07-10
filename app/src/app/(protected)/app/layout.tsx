@@ -52,7 +52,10 @@ export default function AppNavBar({
                             <Avatar className="h-6 w-6 select-none">
                                 <AvatarImage src={image} />
 
-                                <AvatarFallback className="text-xs">
+                                <AvatarFallback
+                                    className="text-xs"
+                                    data-testid="avatar-fallback"
+                                >
                                     {!name ? "U" : nameInitials(name)}
                                 </AvatarFallback>
                             </Avatar>
@@ -62,7 +65,10 @@ export default function AppNavBar({
                                 {!name ? "User" : name}
                             </DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={() => signOut()}>
+                            <DropdownMenuItem
+                                data-testid="sign-out-item"
+                                onClick={() => signOut()}
+                            >
                                 Sign out
                             </DropdownMenuItem>
                         </DropdownMenuContent>

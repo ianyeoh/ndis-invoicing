@@ -7,13 +7,11 @@ import Timeslot, {
 import { maxPickerHeight, timeslotSize } from "./timeslot-picker";
 import { getDay } from "date-fns";
 import { cn } from "@/lib/utils";
+import { TimeslotColumn } from "@/lib/types";
 
-export type TimeslotColumn = {
-    // not the most memory efficient way to do this, since we store null values
-    // but it's good enough for now. If greater space efficiency is needed, consider
-    // only storing values that contain meaningful values
-    timeslots: TimeslotState[];
-};
+/* TimeslotColumn now lives in @/lib/types (shared, component-free).
+ * Re-exported here for existing importers of this module. */
+export type { TimeslotColumn };
 
 export const initialColumnState = (): TimeslotColumn => {
     const numTimeslots = (24 * 60) / timeslotSize; // inherited from timeslot-picker
